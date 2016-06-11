@@ -215,6 +215,59 @@ function card_element_dndstats(params, card_data, options) {
     return result;
 }
 
+function card_element_epstats(params, card_data, options) {
+    var stats = [15, 15, 15, 15, 15, 15, 15, 0, 1, 35];
+    for (var i = 0; i < 10; ++i) {
+        stats[i] = parseInt(params[i], 10) || 0;
+    }
+
+    var result = "";
+    result += '<table class="card-stats">';
+    result += '    <tbody><tr>';
+    result += '      <th class="card-stats-header">COG</th>';
+    result += '      <th class="card-stats-header">COO</th>';
+    result += '      <th class="card-stats-header">INT</th>';
+    result += '      <th class="card-stats-header">REF</th>';
+    result += '      <th class="card-stats-header">SAV</th>';
+    result += '      <th class="card-stats-header">SOM</th>';
+    result += '      <th class="card-stats-header">WIL</th>';
+    result += '      <th class="card-stats-header">MOX</th>';
+    result += '    </tr>';
+    result += '    <tr>';
+    result += '      <td class="card-stats-cell">' + stats[0] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[1] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[2] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[3] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[4] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[5] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[6] + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[7] + '</td>';
+    result += '    </tr>';
+    result += '    <tr>';
+    result += '      <th class="card-stats-header">INIT</th>';
+    result += '      <th class="card-stats-header">SPD</th>';
+    result += '      <th class="card-stats-header">LUC</th>';
+    result += '      <th class="card-stats-header">TT</th>';
+    result += '      <th class="card-stats-header">IR</th>';
+    result += '      <th class="card-stats-header">DUR</th>';
+    result += '      <th class="card-stats-header">WT</th>';
+    result += '      <th class="card-stats-header">DR</th>';
+    result += '    </tr>';
+    result += '    <tr>';
+    result += '      <td class="card-stats-cell">' + ((stats[2] + stats[3]) / 5)  + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[8] + '</td>';
+    result += '      <td class="card-stats-cell">' + (stats[6] * 2) + '</td>';
+    result += '      <td class="card-stats-cell">' + Math.floor(stats[6] / 5) + '</td>';
+    result += '      <td class="card-stats-cell">' + (stats[6] * 4) + '</td>';
+    result += '      <td class="card-stats-cell">' + stats[9] + '</td>';
+    result += '      <td class="card-stats-cell">' + Math.floor(stats[9] / 5) + '</td>';
+    result += '      <td class="card-stats-cell">' + Math.floor(stats[9] * 1.5) + '</td>';
+    result += '    </tr>';
+    result += '  </tbody>';
+    result += '</table>';
+    return result;
+}
+
 function card_element_bullet(params, card_data, options) {
     var result = "";
     result += '<ul class="card-element card-bullet-line">';
@@ -250,6 +303,7 @@ var card_element_generators = {
     boxes: card_element_boxes,
     description: card_element_description,
     dndstats: card_element_dndstats,
+    epstats: card_element_epstats,
     text: card_element_text,
     bullet: card_element_bullet,
     fill: card_element_fill,
